@@ -6,4 +6,4 @@ def load_config(config_filepath: str = "config/config.yaml") -> dict:
         #print(config)
         return config
   
-load_config("config/config.yaml")  
+# load_config("config/config.yaml")  
