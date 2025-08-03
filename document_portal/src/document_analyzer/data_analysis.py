@@ -6,7 +6,8 @@ from utils.model_loader import Model_Loader
 from logger.custom_logger import CustomLogger
 from exception.custom_exception import DocumentPortalException
 from models.model import *
-from langchain.output_parsers import OutputFixingParser, JsonOutputToolsParser
+from langchain.output_parsers import OutputFixingParser
+from langchain_core.output_parsers import JsonOutputParser
 from prompt.prompt_library import *
 
 class DocumentAnalyzer:
@@ -21,7 +22,7 @@ class DocumentAnalyzer:
             self.loader = Model_Loader()
             self.llm = self.loader.load_llm()
             
-            self.parser = JsonOutputToolsParser(pydantic_object=Metadata)
+            self.parser = JsonOutputParser(pydantic_object=Metadata)
             self.fixing_parser = OutputFixingParser.from_llm(parser=self.parser, llm=self.llm)
             self.prompt = prompt
             self.log.info("DocumentAnalyzer initialized successfully")
@@ -31,7 +32,24 @@ class DocumentAnalyzer:
             
         
     
-    def analyze_document(self):
-        pass
-    
+    def analyze_document(self, document_text:str)-> dict:
+        """
+        Analyze a document's text and extract structured metadata & summary.
+        """
+        try:
+            chain = self.prompt | self.llm | self.fixing_parser
+            
+            self.log.info("Meta-data analysis chain initialized")
+
+            response = chain.invoke({
+                "format_instructions": self.parser.get_format_instructions(),
+                "document_text": document_text
+            })
+
+            self.log.info("Metadata extraction successful", keys=list(response.keys()))
+            
+            return response
+        except Exception as e:
+            self.log.error("Metadata analysis failed", error=str(e))
+            raise DocumentPortalException("Metadata extraction failed",sys)
     
