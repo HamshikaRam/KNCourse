@@ -12,7 +12,8 @@ class CustomLogger:
         # Timestamped log file (for persistence)
         log_file = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
         self.log_file_path = os.path.join(self.logs_dir, log_file)
-
+        print(f"Log file path: {self.log_file_path}")
+        
     def get_logger(self, name=__file__):
         logger_name = os.path.basename(name)
 
