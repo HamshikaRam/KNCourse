@@ -9,4 +9,5 @@ faiss-cpu
 structlog
 PyMuPDF
 fitz
+pandas
 -e .
