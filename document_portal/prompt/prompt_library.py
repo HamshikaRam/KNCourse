@@ -25,7 +25,7 @@ Input documents:
 
 Your response should follow this format:
 
-{format_instruction}
+{format_instructions}
 """)
 
 PROMPT_REGISTRY = {"document_analysis": document_analysis_prompt, "document_comparison": document_comparison_prompt}
