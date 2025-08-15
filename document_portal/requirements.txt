@@ -10,4 +10,7 @@ structlog
 PyMuPDF
 fitz
 pandas
+langchain-core[tracing]
+streamlit
+pytest
 -e .

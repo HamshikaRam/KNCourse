@@ -40,7 +40,7 @@ class Model_Loader:
         """
         try:
             log.info("Loading embeddings model...")
-            model_name = self.config["embeddings_model"]["model_name"]
+            model_name = self.config["embedding_model"]["model_name"]
             return GoogleGenerativeAIEmbeddings(model=model_name)
             
         except Exception as e:

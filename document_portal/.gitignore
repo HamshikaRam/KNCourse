@@ -8,3 +8,4 @@ logs/
 test.py
 .venv
 .txt
+*.pdf

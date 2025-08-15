@@ -3,7 +3,8 @@
 from unittest.mock import Base
 from langchain_text_splitters import Language
 from pydantic import BaseModel, Field, RootModel
-from typing import Optional, List, Dict, Any, Union, Enum
+from typing import Optional, List, Dict, Any, Union
+from enum import Enum
 
 class Metadata(BaseModel):
     Summary: List[str] = Field(default_factory=list, description="Summary of the document")
