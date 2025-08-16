@@ -1,8 +1,6 @@
-from math import e
 import sys
 import streamlit as st
 import os
-from dotenv import load_dotenv
 from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_community.vectorstores import FAISS
