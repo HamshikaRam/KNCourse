@@ -12,7 +12,7 @@ class ConversationalRag:
         pass
     
     @staticmethod
-    def _format_docs(self, docs):
+    def _format_docs(docs):
         pass
     
     def _build_lcel_chain(self):
