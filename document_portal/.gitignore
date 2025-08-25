@@ -9,3 +9,6 @@ test.py
 .venv
 .txt
 *.pdf
+*.pkl
+*.faiss
+.docx
